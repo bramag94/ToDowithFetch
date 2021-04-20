@@ -35,6 +35,20 @@ export function Home() {
 			}) //cargando la info
 			.catch(error => console.error("Error:", error.message));
 	};
+	const deletetodo = lista => {
+		fetch(url, {
+			method: "DELETE",
+			body: JSON.stringify(lista),
+			headers: { "Content-Type": "application/json" }
+		})
+			.then(res => res.json())
+			.then(data => {
+				loadTodo();
+				alert(data.result);
+				//console.log({ data });
+			}) //cargando la info
+			.catch(error => console.error("Error:", error.message));
+	};
 
 	useEffect(() => {
 		loadTodo();
@@ -82,6 +96,7 @@ export function Home() {
 				}}>
 				Update
 			</button>
+			<span></span>
 		</div>
 	);
 }
